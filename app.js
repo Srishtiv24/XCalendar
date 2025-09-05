@@ -4,8 +4,6 @@ window.addEventListener("DOMContentLoaded",function()
   alert("Welcome to XCalendar - Celebrate each step toward your goal!\n\nClick the 'Set Start Date' button to begin your journey, then choose a future date to set your goal.");
 })
 
-let selectedStartDate = localStorage.getItem("startDate") ? true : false;
-
 // STEP 1: Initialize current date
 let today=new Date();
 let month=today.getMonth();//here indexes are returned 
@@ -147,7 +145,8 @@ function addDayClickListeners()
       {      alert("Goal already set. Use the reset button to change it.");
              return;
       }
-       
+       let selectedStartDate = localStorage.getItem("startDate") ;
+
       if(selectedStartDate)
       {//selectedDateElement=date;//a li , dates the selectedElement variable to remember which day is currently selected.
          console.log("start date selected");
@@ -228,7 +227,6 @@ document.getElementById("set-start-date").addEventListener
     inputDate.setHours(0,0,0,0);
     if(inputDate<=todayMidnight)
 {  localStorage.setItem("startDate", inputDate.toDateString());
-  selectedStartDate=true;
 
   alert("Start date updated! Now choose a goal date");
   renderCalendar(); // Refresh calendar
@@ -260,6 +258,7 @@ document.getElementById("reset-goal-date").addEventListener
   renderCalendar(); // Refresh 
   }
 )
+
 
 
 
