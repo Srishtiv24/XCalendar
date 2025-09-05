@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XCalendar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet" >
+</head>
+<body>
+    <div class="bigcontainer">
+
+    <br>
+    <h1> XCalendar</h1>
+    <br>
+<div class="container">
+        <header class="header">
+            <p class="current"></p>
+            <div class="navigation">
+                <span class="material-symbols-rounded" id="calendar-prev">chevron_left</span>
+                <span class="material-symbols-rounded" id="calendar-next">chevron_right</span>
+            </div>
+        </header>
+    <div class="body">
+            <ul class="days"><!--static list-->
+                <li>Sun</li> 
+                <li>Mon</li>
+                <li>Tue</li>
+                <li>Wed</li>
+                <li>Thu</li>
+                <li>Fri</li>
+                <li>Sat</li>
+            </ul>
+            <ul class="dates"><!--dynamic list-->
+            </ul>
+    </div>
+</div>
+<br>
+<h4 id="progress-counter"></h4>
+<br>
+<div class="btns">
+    <button id="set-start-date">Set Start Date</button>
+    <button id="reset-goal-date">Reset Goal Date</button>
+    </div>
+
+</div>
+
+<script src="app.js" ></script>
+</body>
+</html>
+<!--future work
+Affirmation of the Day: Display a rotating motivational quote or affirmation each day to keep users inspired.
+-->
