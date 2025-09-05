@@ -3,6 +3,7 @@ window.addEventListener("DOMContentLoaded",function()
 {
   alert("Welcome to XCalendar - Celebrate each step toward your goal!\n\nClick the 'Set Start Date' button to begin your journey, then choose a future date to set your goal.");
 })
+
 let selectedStartDate = localStorage.getItem("startDate") ? true : false;
 
 // STEP 1: Initialize current date
@@ -149,7 +150,8 @@ function addDayClickListeners()
        
       if(selectedStartDate)
       {//selectedDateElement=date;//a li , dates the selectedElement variable to remember which day is currently selected.
-      let selectedDate=parseInt(date.getAttribute("data-date"));//Extracts the day number from the clicked element’s data-day attribute and stores it as a number.
+         console.log("start date selected");
+        let selectedDate=parseInt(date.getAttribute("data-date"));//Extracts the day number from the clicked element’s data-day attribute and stores it as a number.
      
      //F1
       const selectedGoalDate = new Date(year,month,selectedDate);//What it does: Creates a full JavaScript Date object using the current calendar view’s year, month, and the clicked day. Why: This gives you the exact date the user selected, which you’ll store as the goal.
@@ -214,16 +216,31 @@ document.getElementById("set-start-date").addEventListener
 
   let input = prompt("Enter new start date (YYYY-MM-DD):");
   if(input)
-  { let inputDate=new Date(input);
-    inputDate.setHours(0,0,0,0);
+  {  //check valid 
+    const isValid=/^\d{4}-\d{2}-\d{2}$/.test(input);
+    if(!isValid)
+    {
+      alert("Please enter the date in YYYY-MM-DD format.");
+      return;
+    } 
 
-  localStorage.setItem("startDate", inputDate.toDateString());
+    let inputDate=new Date(input);
+    inputDate.setHours(0,0,0,0);
+    if(inputDate<=todayMidnight)
+{  localStorage.setItem("startDate", inputDate.toDateString());
   selectedStartDate=true;
+
   alert("Start date updated! Now choose a goal date");
   renderCalendar(); // Refresh calendar
+}
+else
+{
+  alert("Choose a past or current date!");
+}
   }
   else
-  {
+  { 
+    alert("Please enter a date in YYYY-MM-DD format.");
     return;
   }
 }
@@ -243,5 +260,8 @@ document.getElementById("reset-goal-date").addEventListener
   renderCalendar(); // Refresh 
   }
 )
+
+
+
 
 
