@@ -1,0 +1,228 @@
+*{
+   margin: 0;
+   padding:0;
+   font-family: 'poppins','sans-serif';
+}
+.container
+{
+   margin:auto;
+   width: 320px;
+   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+   border-radius: 10px;
+   padding: 15px 20px 8px;   /*only three values are given, the second value applies to both sides*/
+}
+.btns
+{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+}
+#set-start-date,#reset-goal-date {
+    padding: 8px 12px;
+    background-color: #f58999;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  #reset-goal-date
+  {
+    float: right;
+  }
+#set-start-date:hover {
+    background-color: #c5034a;
+  } 
+#reset-goal-date:hover {
+    background-color: #c5034a;
+  }
+
+  #progress-counter
+  {
+    text-align: center;
+    color: #414141;
+
+  }
+.bigcontainer
+{
+   margin:auto;
+   width: 360px;
+   display: flex;
+   flex-direction: column;
+   align-items: space-between;
+   justify-content:center ;
+}
+.header .navigation {
+    display: flex;
+}
+.container .header
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.header .navigation span
+{   height:30px;
+    width:30px;
+    margin:0 2px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 30px;
+    color: #aeabab;
+    border-radius: 50%;
+    user-select:none; /*prevents the text inside the span—like your navigation icons (chevron_left, chevron_right, or even plain < and >)—from being accidentally selected when users click or drag. */
+    font-size: 1.4rem;
+}
+.header .navigation span:hover {
+    background: #f2f2f2;
+}
+.header .current{
+    font-weight: 500;
+    font-size: 1.2rem;        
+}
+.body
+{   padding: 10px;     
+}
+.body .dates {
+    margin-bottom: 10px;    
+    width: 100%;
+}             
+.body ul
+{
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    text-align: center;
+}
+h1{
+    text-align: center;
+    color:#c5034a;
+}
+.navigation span:last-child
+{
+    margin-right: -8px;
+}
+.body ul li
+{
+   width:calc(100%/7);/*100% / 7 divides the full width of the parent container evenly across 7 <li> elements.*/
+   height:30px;
+   font-size: 0.9rem;
+   line-height: 30px;
+   margin-top: 20px;           
+   z-index: 1;
+   color: #414141;
+   cursor: pointer;
+   text-align: center;
+   position: relative;
+   box-sizing: border-box;
+/* default, CSS uses content-box, which means:
+width and height only apply to the content.
+Padding and border are added on top, making the final size larger than expected.
+With border-box, the padding and border are included inside the declared width and height,
+*/
+}
+.body .days li
+{
+    cursor: default;
+    font-weight: 500;
+    font-size: 0.85rem;         
+}
+
+.days li:hover {
+    transform: scale(1.1);
+    transition: transform 0.2s ease;
+    color:#c5034a;
+  }
+ 
+/*active and inactive are classes which we will add in js
+.inactive dates (typically from previous or next months):
+Cursor set to default (non-clickable)
+.active dates (valid days in the current month):
+*/
+
+.body  .dates li.inactive
+{  cursor: default;
+   color: #aaa;
+   
+}
+
+.body  .dates li.active
+{  cursor: pointer;
+   font-weight: bold;   
+   color:#c5034a;
+}
+
+.body .dates li::before /*This setup creates a layered circular background behind each date cell, which you can style dynamically using other classes like .active, .highlight, or :hover. It’s a clean way to add visual polish without cluttering your HTML.*/
+{
+    height:30px;
+    width: 30px;
+    content:"";
+    border-radius: 50%;
+    position: absolute; /*wrt to li to centre the pseudo elem*/
+    z-index: -1;
+    top:50%;
+    left:50%;
+    transform: translate(-50% , -50%);
+}
+/*position: absolute;
+This makes the ::before pseudo-element detach from the normal flow and position itself relative to its nearest position: relative ancestor (which is your <li>).
+It allows you to place the circle exactly where you want inside the date cell. top: 50%; left: 50%;
+These place the top-left corner of the circle at the center of the <li>.But that’s not enough—because the circle’s origin is still its top-left corner, not its center.
+transform: translate(-50%, -50%);This shifts the circle backwards by half its own width and height.So instead of the top-left corner being at the center, the center of the circle is now aligned with the center of the <li>.
+Visual Analogy Imagine placing a sticker on a square tile:top: 50%; left: 50% puts the sticker’s top-left corner at the center of the tile.
+transform: translate(-50%, -50%) nudges the sticker so its center aligns with the tile’s center.
+*/
+     
+     .body .dates li:not(active):hover::before/*pseudo elems colour when they are hovered but are not active or selected*/
+     {
+         background:#ccc;
+     }
+     
+     .body .dates li.active:hover::before/*pseudo elems colour when they are hovered but are not active or selected*/
+     {
+         background:pink;
+     }
+     
+     .body .dates li.goal:hover::before/*pseudo elems colour when they are hovered but are not active or selected*/
+     {
+         background:pink;
+     }
+     
+     .goal::before {
+       border: 2px solid #f58999;
+       border-radius: 50%;
+      
+     }
+     
+.body .dates li.goal {
+    position: relative; /* Enables absolute positioning inside */
+    font-weight: bold;
+    color: #c5034a;
+    z-index: 1; 
+  }
+  .body .dates li.crossed::before {
+    content: "X";  
+    font-size: 1rem;
+    font-weight: bold;
+    color: #c5034a;
+    background: #ffe6ec;
+    border: 2px solid #f58999;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%; /*to center*/
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+  }
+
+  /*You're first placing the top-left corner of the element at the center of the container, then nudging it back by half its own width and height so the whole element is centered.
+  */
+
+  #motivation{
+    color:#c5034a;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
