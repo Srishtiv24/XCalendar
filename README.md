@@ -16,7 +16,6 @@ XCalendar is a productivity tool designed to help you stay consistent and celebr
 - **Goal Tracking**: Create, edit, and manage personal goals.  
 - **Visual Progress**: Calendar view with glowing highlights for completed tasks.  
 - **Consistency Builder**: Streak tracking to reinforce habits.  
-- **Cross-Calendar Sync**: Import/export events from Google Calendar, Outlook, or iCal.  
 - **Automatic Day Crossing**: Each day is crossed off automatically as time passes.  
 - **Day Counter**: Built-in counter shows days crossed and days remaining.  
 - **Daily Bhagavad Gita Quotes**: Receive one motivational verse each day to inspire discipline and focus.  
