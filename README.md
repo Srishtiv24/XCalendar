@@ -38,4 +38,5 @@ XCalendar is a productivity tool designed to help you stay consistent and celebr
 5. **Celebrate Wins**  
    Milestones glow on the calendar, reminding you of progress.  
 
+![preview](./preview.jpg)
 🚀 [Live Demo on Render](https://xcalendar.onrender.com)
